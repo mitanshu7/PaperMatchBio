@@ -188,7 +188,7 @@ contact_text = """
 """
 
 examples = [
-    ["BioRxiv DOI", "10.1101/2019.12.08.19013979"],
+    ["BioRxiv DOI", "10.1101/2024.02.22.581503"],
     ["Abstract or Description", "Game theory applications in Biology"],
 ]
 
