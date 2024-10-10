@@ -210,7 +210,7 @@ examples = [
 
 ################################################################################
 # Create the Gradio interface
-with gr.Blocks(theme=gr.themes.Soft()) as demo:
+with gr.Blocks(theme=gr.themes.Soft(), title='PaperMatchBio') as demo:
 
     # Title and description
     gr.Markdown("# PaperMatchBio: Discover Related Research Papers")
@@ -260,4 +260,4 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
 ################################################################################
 
 if __name__ == "__main__":
-    demo.launch(server_port=7862)
+    demo.launch(server_port=7862, favicon_path='logo.png')
