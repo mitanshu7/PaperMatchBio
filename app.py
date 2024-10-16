@@ -51,9 +51,6 @@ def sanitise_doi(doi):
 @cache
 def fetch_biorxiv_by_id(doi):
 
-    # Sanitise DOI
-    doi = sanitise_doi(doi)
-
     # Define the base URL for the bioRxiv API
     base_url = "https://api.biorxiv.org/details/biorxiv/"
 
@@ -148,6 +145,9 @@ def predict(input_type, input_text, limit):
         # Check if input is empty
         if input_text == "":
             raise gr.Error("Please enter a BioRxiv DOI", 10)
+
+        # Sanitise DOI
+        input_text = sanitise_doi(input_text)
 
         # Search if id is already in database
         id_in_db = milvus_client.get(collection_name="biorxiv_abstracts",ids=[input_text])
