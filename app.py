@@ -213,8 +213,9 @@ with gr.Blocks(theme=gr.themes.Soft(), title='PaperMatchBio') as demo:
 
     # Title and description
     gr.Markdown("# PaperMatchBio: Discover Related Research Papers")
-    gr.Markdown("## Enter either a BioRxiv DOI or paste an abstract to explore papers based on semantic similarity.")
-    gr.Markdown("### _BioRiv Database last updated: September 2024_")
+    gr.Markdown("## Enter either a [BioRxiv](https://www.biorxiv.org/) [DOI](https://www.doi.org/) or paste an abstract to explore papers based on semantic similarity.")
+    gr.Markdown("### Visit [PaperMatch](https://papermatch.mitanshu.tech) for [ArXiv](https://arxiv.org/) and [PaperMatchMed](https://papermatchmed.mitanshu.tech) for [MedRxiv](https://www.medrxiv.org/) alternatives.")
+    gr.Markdown("### _BioRiv Database last updated: 6th November 2024_")
     
     # Input Section
     with gr.Row():
