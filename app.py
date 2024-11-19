@@ -173,14 +173,6 @@ def predict(input_text, limit=5, increment=5):
 
             # Embed abstract
             abstract_vector = embed(biorxiv_json['Abstract'])
-
-        # Search database
-        search_results = search(abstract_vector, limit)
-
-        # Gather details about the found papers
-        all_details = fetch_all_details(search_results)
-        
-        return all_details, show_element, new_limit
     
     # When bioRxiv doi is not found in input text, treat input text as abstract
     else:
@@ -188,13 +180,13 @@ def predict(input_text, limit=5, increment=5):
         # Embed abstract
         abstract_vector = embed(input_text)
 
-        # Search database
-        search_results = search(abstract_vector, limit)
+    # Search database
+    search_results = search(abstract_vector, limit)
 
-        # Gather details about the found papers
-        all_details = fetch_all_details(search_results)
+    # Gather details about the found papers
+    all_details = fetch_all_details(search_results)
         
-        return all_details, show_element, new_limit
+    return all_details, show_element, new_limit
             
 ################################################################################
 
@@ -202,7 +194,7 @@ def predict(input_text, limit=5, increment=5):
 contact_text = """
 <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
     <h3>Crafted with ❤️ by <a href="https://www.linkedin.com/in/mitanshusukhwani/" target="_blank">Mitanshu Sukhwani</a></h3>
-    <h4>Discover more at <a href="https://papermatchbio.mitanshu.tech" target="_blank">PaperMatchBio</a></h4>
+    <h4>Discover more at <a href="https://papermatch.mitanshu.tech" target="_blank">PaperMatch</a></h4>
 </div>
 """
 # Examples to display
@@ -263,11 +255,14 @@ with gr.Blocks(theme=gr.themes.Soft(font=gr.themes.GoogleFont("Helvetica"),
             show_label=False
         )
     
-    # State to track the current page limit
+    # Define the initial page limit
     page_limit = gr.State(5)
 
     # Define the increment for the "Load More" button
     increment = gr.State(5)
+
+    # Define new page limit
+    new_page_limit = gr.State(page_limit.value + increment.value)
 
     # Output section, displays the search results
     output = gr.Markdown(label="Related Papers", latex_delimiters=[{ "left": "$", "right": "$", "display": False}])
@@ -276,16 +271,16 @@ with gr.Blocks(theme=gr.themes.Soft(font=gr.themes.GoogleFont("Helvetica"),
     load_more_button = gr.Button("Load More", visible=False)
 
     # Event handler for the input text box, triggers the search function
-    input_text.submit(predict, [input_text, page_limit, increment], [output, load_more_button, page_limit])
+    input_text.submit(predict, [input_text, page_limit, increment], [output, load_more_button, new_page_limit])
 
     # Event handler for the "Load More" button
-    load_more_button.click(predict, [input_text, page_limit, increment], [output, load_more_button, page_limit])
+    load_more_button.click(predict, [input_text, new_page_limit, increment], [output, load_more_button, new_page_limit])
 
     # Example inputs
     gr.Examples(
         examples=examples, 
         inputs=input_text,
-        outputs=[output, load_more_button, page_limit],
+        outputs=[output, load_more_button, new_page_limit],
         fn=predict,
         label="Try:",
         run_on_click=True)
