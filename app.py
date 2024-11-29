@@ -268,7 +268,7 @@ with gr.Blocks(theme=gr.themes.Soft(font=gr.themes.GoogleFont("Helvetica"),
     output = gr.Markdown(label="Related Papers", latex_delimiters=[{ "left": "$", "right": "$", "display": False}])
 
     # Hidden by default, appears after the first search
-    load_more_button = gr.Button("Load More", visible=False)
+    load_more_button = gr.Button("More results ⬇️", visible=False)
 
     # Event handler for the input text box, triggers the search function
     input_text.submit(predict, [input_text, page_limit, increment], [output, load_more_button, new_page_limit])
