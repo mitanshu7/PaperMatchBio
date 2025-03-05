@@ -199,8 +199,8 @@ contact_text = """
 """
 # Examples to display
 examples = [
-    "10.1101/2024.02.22.581503",
-    "Game theory applications in Biology"
+    "10.1101/2024.06.24.600358",
+    "The evolution of sequence specificity in a DNA binding protein family"
 ]
 
 # Show total number of entries in database
