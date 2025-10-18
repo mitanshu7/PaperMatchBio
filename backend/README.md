@@ -24,8 +24,7 @@ write the following:
 [Container]
 Image=localhost/papermatchbio_backend:latest
 AutoUpdate=local
-PublishPort=8001:8001
-
+PublishPort=8002:8002
 EnvironmentFile=/absolute/path/to/.env
 
 [Service]
