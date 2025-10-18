@@ -1,0 +1,14 @@
+[project]
+name = "papermatchbio"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "backoff>=2.2.1",
+    "fastapi[standard]>=0.119.0",
+    "mixedbread>=0.34.0",
+    "pymilvus>=2.6.2",
+    "python-dotenv>=1.1.1",
+    "requests>=2.32.5",
+]
