@@ -4,6 +4,9 @@ const myButton = document.getElementById("search_button")
 // Search input
 const myTextArea = document.getElementById("search_input")
 
+// Tip about madhu's papers
+const myMadhu = document.getElementById("madhu")
+
 // Huddingface dataset url
 const dataset_url = "https://datasets-server.huggingface.co/info?dataset=bluuebunny%2Fbiorxiv_binary_embeddings"
 
@@ -101,6 +104,9 @@ function perform_search(event){
   // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/blur
   myTextArea.blur()
   
+  // Remove the checkout madhu's papers paragraph after search
+  myMadhu.innerHTML = ""
+  
   const input_text = myTextArea.value.trim()
   console.log("input_text")
   console.log(input_text)
@@ -161,6 +167,9 @@ function search_by_url() {
     
     // reflect arxiv id on textarea
     myTextArea.value = q
+    
+    // Remove the checkout madhu's papers paragraph after search
+    myMadhu.innerHTML = ""
     
     // if url also has a filter, then use it
     // http://localhost:8080/?q=2401.07215&filter=year==2025 works
